@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulsar - Motor de Búsqueda Inteligente</title>
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --hover-color: #3a56d4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .logo {
+            height: 120px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .tagline {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .gcse-search {
+            margin-top: 20px;
+        }
+        
+        .gcse-searchbox {
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: 2px solid #dfe1e5;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .gcse-searchbox:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 107, 255, 0.2);
+        }
+        
+        .gcse-searchbutton {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .gcse-searchbutton:hover {
+            background-color: var(--hover-color);
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .search-container {
+                padding: 20px;
+            }
+            
+            .logo {
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn.discordapp.com/attachments/1330964389565562972/1360669349089644956/imagen_2025-04-12_193134309-removebg-preview.png?ex=67fbf594&is=67faa414&hm=e977d2a622586992316c6b196271d56f8d60053d08ad299aa12333a71aa14ada&" 
+             alt="Pulsar Logo" 
+             class="logo">
+        <h1>Pulsar Search</h1>
+        <p class="tagline">Encuentra exactamente lo que necesitas</p>
+    </div>
+
+    <div class="search-container">
+        <!-- Google Custom Search Element -->
+        <div class="gcse-search" data-enableAutoComplete="true" data-autoCompleteMaxCompletions="5"></div>
+    </div>
+
+    <footer>
+        © 2025 Pulsar Search - Todos los derechos reservados
+    </footer>
+
+    <!-- Google Custom Search Script -->
+    <script async src="https://cse.google.com/cse.js?cx=0201588bb53c74e51"></script>
+    <script>
+        // Set a timeout to check if the search element is loaded
+        setTimeout(() => {
+            if (!document.querySelector('.gcse-searchbox')) {
+                console.error('El motor de búsqueda no se cargó correctamente');
+                // Mostrar mensaje de error alternativo
+                const searchContainer = document.querySelector('.search-container');
+                searchContainer.innerHTML = `
+                    <div style="color: #dc3545; text-align: center;">
+                        <h3>Error al cargar el motor de búsqueda</h3>
+                        <p>Por favor, verifica tu conexión a internet o inténtalo más tarde.</p>
+                    </div>
+                `;
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
